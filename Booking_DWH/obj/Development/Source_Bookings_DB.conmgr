@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="Source_Bookings_DB"
+  DTS:DTSID="{F896FD74-A91C-4CBC-94B6-282A4E03390A}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=.;Initial Catalog=Bookings_DB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Booking_DWH-{F896FD74-A91C-4CBC-94B6-282A4E03390A}LocalHost.Bookings_DB;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

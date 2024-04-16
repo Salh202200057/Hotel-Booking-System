@@ -1,0 +1,1590 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/14/2024 1:57:52 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-D5NAJ33"
+  DTS:CreatorName="DESKTOP-D5NAJ33\Saleh Mohamed"
+  DTS:DTSID="{92DF0971-070E-4428-B941-254679CBC999}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{62B01DE4-2D3C-41D5-A10C-62596584D130}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT_DIM_Distribution_Channel"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{BD655BC2-1535-4E7A-8F46-965AF5B69FD9}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_DIM_Distribution_Channel"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_DIM_Distribution_Channel\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_DIM_Distribution_Channel\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Data Conversion.Inputs[Data Conversion Input].Columns[Distribution Channel]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Distribution Channel"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\Union All.Outputs[Union All Output 1].Columns[Distribution Channel]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_DIM_Distribution_Channel\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\DFT_DIM_Distribution_Channel\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Distribution Channel]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Distribution Channel]"
+                      name="Copy of Distribution Channel"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT_DIM_Distribution_Channel\Union All.Outputs[Union All Output 1].Columns[Distribution Channel]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_DIM_Distribution_Channel\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\DFT_DIM_Distribution_Channel\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_DIM_Distribution_Channel\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_DIM_Distribution_Channel\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_DIM_Distribution_Channel\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT_DIM_Distribution_Channel\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Derived Column.Outputs[Derived Column Output].Columns[end_date]"
+                      dataType="dbTimeStamp"
+                      description="end_date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\Derived Column.Outputs[Derived Column Output].Columns[end_date]"
+                      name="end_date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_DIM_Distribution_Channel\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT_DIM_Distribution_Channel\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_DIM_Distribution_Channel\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_DIM_Distribution_Channel\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_DIM_Distribution_Channel\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT_DIM_Distribution_Channel\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Derived Column 1.Outputs[Derived Column Output].Columns[start_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\Derived Column 1.Outputs[Derived Column Output].Columns[start_date]"
+                      name="start_date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Derived Column 1.Outputs[Derived Column Output].Columns[is_current]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\Derived Column 1.Outputs[Derived Column Output].Columns[is_current]"
+                      name="is_current"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_UI1)1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_UI1)1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_DIM_Distribution_Channel\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT_DIM_Distribution_Channel\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="DIM_Distribution_Channel_Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DistributionChannel]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source.Connections[OleDbConnection]"
+                  connectionManagerID="{F896FD74-A91C-4CBC-94B6-282A4E03390A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Source_Bookings_DB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source.Outputs[OLE DB Source Output].Columns[Distribution Channel]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source.Outputs[OLE DB Source Output].ExternalColumns[Distribution Channel]"
+                      length="255"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source.Outputs[OLE DB Source Output].Columns[Distribution Channel]"
+                      name="Distribution Channel"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source.Outputs[OLE DB Source Output].Columns[ChannelKey]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source.Outputs[OLE DB Source Output].ExternalColumns[ChannelKey]"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source.Outputs[OLE DB Source Output].Columns[ChannelKey]"
+                      name="ChannelKey"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source.Outputs[OLE DB Source Output].ExternalColumns[Distribution Channel]"
+                      dataType="wstr"
+                      length="255"
+                      name="Distribution Channel" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source.Outputs[OLE DB Source Output].ExternalColumns[ChannelKey]"
+                      dataType="r8"
+                      name="ChannelKey" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source.Outputs[OLE DB Source Error Output].Columns[Distribution Channel]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source.Outputs[OLE DB Source Error Output].Columns[Distribution Channel]"
+                      name="Distribution Channel" />
+                    <outputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source.Outputs[OLE DB Source Error Output].Columns[ChannelKey]"
+                      dataType="r8"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source.Outputs[OLE DB Source Error Output].Columns[ChannelKey]"
+                      name="ChannelKey" />
+                    <outputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_DIM_Distribution_Channel\DRV_Source_System_Code"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="DRV_Source_System_Code"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_DIM_Distribution_Channel\DRV_Source_System_Code.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\DRV_Source_System_Code.Inputs[Derived Column Input].Columns[ChannelKey]"
+                      cachedDataType="r8"
+                      cachedName="ChannelKey"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source.Outputs[OLE DB Source Output].Columns[ChannelKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_DIM_Distribution_Channel\DRV_Source_System_Code.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT_DIM_Distribution_Channel\DRV_Source_System_Code.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\DRV_Source_System_Code.Outputs[Derived Column Output].Columns[Source_System_Code]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\DRV_Source_System_Code.Outputs[Derived Column Output].Columns[Source_System_Code]"
+                      name="Source_System_Code"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_UI1)1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_UI1)1</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\DRV_Source_System_Code.Outputs[Derived Column Output].Columns[Channel_Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\DRV_Source_System_Code.Outputs[Derived Column Output].Columns[Channel_Key]"
+                      name="Channel_Key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I4)#{Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source.Outputs[OLE DB Source Output].Columns[ChannelKey]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)ChannelKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_DIM_Distribution_Channel\DRV_Source_System_Code.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT_DIM_Distribution_Channel\DRV_Source_System_Code.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\DRV_Source_System_Code.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\DRV_Source_System_Code.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\DRV_Source_System_Code.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\DRV_Source_System_Code.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_DIM_Distribution_Channel\Insert Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DIM_Distribution_Channel]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_DIM_Distribution_Channel\Insert Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{26F2EEA2-BF45-427A-BB00-7E982A563B00}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.Bookings_DWH]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_DIM_Distribution_Channel\Insert Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Insert Destination.Inputs[OLE DB Destination Input].Columns[Channel_Key]"
+                      cachedDataType="i4"
+                      cachedName="Channel_Key"
+                      externalMetadataColumnId="Package\DFT_DIM_Distribution_Channel\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Channel_Key_BK]"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\Union All.Outputs[Union All Output 1].Columns[Channel_Key]" />
+                    <inputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Insert Destination.Inputs[OLE DB Destination Input].Columns[start_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="start_date"
+                      externalMetadataColumnId="Package\DFT_DIM_Distribution_Channel\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[start_date]"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\Derived Column 1.Outputs[Derived Column Output].Columns[start_date]" />
+                    <inputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Insert Destination.Inputs[OLE DB Destination Input].Columns[Source_System_Code]"
+                      cachedDataType="ui1"
+                      cachedName="Source_System_Code"
+                      externalMetadataColumnId="Package\DFT_DIM_Distribution_Channel\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[source_system_code]"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\Union All.Outputs[Union All Output 1].Columns[Source_System_Code]" />
+                    <inputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Insert Destination.Inputs[OLE DB Destination Input].Columns[Copy of Distribution Channel]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Copy of Distribution Channel"
+                      externalMetadataColumnId="Package\DFT_DIM_Distribution_Channel\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Distribution_Channel]"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Distribution Channel]" />
+                    <inputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Insert Destination.Inputs[OLE DB Destination Input].Columns[is_current]"
+                      cachedDataType="ui1"
+                      cachedName="is_current"
+                      externalMetadataColumnId="Package\DFT_DIM_Distribution_Channel\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[is_current]"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\Derived Column 1.Outputs[Derived Column Output].Columns[is_current]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Channel_Key_SK]"
+                      dataType="i4"
+                      name="Channel_Key_SK" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Channel_Key_BK]"
+                      dataType="i4"
+                      name="Channel_Key_BK" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Distribution_Channel]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Distribution_Channel" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[start_date]"
+                      dataType="dbTimeStamp"
+                      name="start_date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[end_date]"
+                      dataType="dbTimeStamp"
+                      name="end_date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[is_current]"
+                      dataType="ui1"
+                      name="is_current" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[source_system_code]"
+                      dataType="ui1"
+                      name="source_system_code" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_DIM_Distribution_Channel\Insert Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_DIM_Distribution_Channel\Insert Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_DIM_Distribution_Channel\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DIM_Distribution_Channel] SET [end_date] = ? ,is_current=0
+
+WHERE [Channel_Key_BK] = ? AND [end_date] IS NULL</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_DIM_Distribution_Channel\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{26F2EEA2-BF45-427A-BB00-7E982A563B00}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.Bookings_DWH]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_DIM_Distribution_Channel\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\OLE DB Command.Inputs[OLE DB Command Input].Columns[Channel_Key]"
+                      cachedDataType="i4"
+                      cachedName="Channel_Key"
+                      externalMetadataColumnId="Package\DFT_DIM_Distribution_Channel\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\DRV_Source_System_Code.Outputs[Derived Column Output].Columns[Channel_Key]" />
+                    <inputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\OLE DB Command.Inputs[OLE DB Command Input].Columns[end_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="end_date"
+                      externalMetadataColumnId="Package\DFT_DIM_Distribution_Channel\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\Derived Column.Outputs[Derived Column Output].Columns[end_date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="dbTimeStamp"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="i4"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_DIM_Distribution_Channel\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\DFT_DIM_Distribution_Channel\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_DIM_Distribution_Channel\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\DFT_DIM_Distribution_Channel\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension"
+              componentClassID="Microsoft.SCD"
+              contactInfo="Slowly Changing Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Updates a SQL Server Analysis Services data warehouse dimension. Update dimension records that are already present and  insert dimension records that aren't. For example, update the DimProduct table of the AdventureWorksDW OLAP database with data from the Products table in the AdventureWorks OLTP database."
+              name="Slowly Changing Dimension"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SELECT statement used to create a schema rowset."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Channel_Key_BK], [Distribution_Channel], [source_system_code],[start_date],[end_date] FROM [dbo].[DIM_Distribution_Channel]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
+                  name="CurrentRowWhere">[start_date] IS NOT NULL AND [end_date] IS NULL</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
+                  name="UpdateChangingAttributeHistory">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
+                  name="FailOnFixedAttributeChange">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the column name for the inferred member."
+                  name="InferredMemberIndicator"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether inferred member updates are detected."
+                  name="EnableInferredMember">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when a lookup of an existing record fails."
+                  name="FailOnLookupFailure">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies that all rows in the input are new or the transformation detects the change type."
+                  name="IncomingRowChangeType"
+                  typeConverter="IncomingRowChangeType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension.Connections[LookupConnection]"
+                  connectionManagerID="{26F2EEA2-BF45-427A-BB00-7E982A563B00}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.Bookings_DWH]"
+                  description="Defines the connection to use for lookups in the dimension table"
+                  name="LookupConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+                  name="Slowly Changing Dimension Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Channel_Key]"
+                      cachedDataType="i4"
+                      cachedName="Channel_Key"
+                      externalMetadataColumnId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Channel_Key_BK]"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\DRV_Source_System_Code.Outputs[Derived Column Output].Columns[Channel_Key]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Distribution Channel]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Distribution Channel"
+                      externalMetadataColumnId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Distribution_Channel]"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source.Outputs[OLE DB Source Output].Columns[Distribution Channel]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Source_System_Code]"
+                      cachedDataType="ui1"
+                      cachedName="Source_System_Code"
+                      externalMetadataColumnId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[source_system_code]"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\DRV_Source_System_Code.Outputs[Derived Column Output].Columns[Source_System_Code]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Channel_Key_BK]"
+                      dataType="i4"
+                      name="Channel_Key_BK" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Distribution_Channel]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Distribution_Channel" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[source_system_code]"
+                      dataType="ui1"
+                      name="source_system_code" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[start_date]"
+                      dataType="dbTimeStamp"
+                      name="start_date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[end_date]"
+                      dataType="dbTimeStamp"
+                      name="end_date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension.Outputs[Unchanged Output]"
+                  description="Unchanged rows"
+                  exclusionGroup="1"
+                  name="Unchanged Output"
+                  synchronousInputId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension.Outputs[New Output]"
+                  description="New rows"
+                  exclusionGroup="1"
+                  name="New Output"
+                  synchronousInputId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension.Outputs[Fixed Attribute Output]"
+                  description="Rows with changes in columns tagged FixedAttribute"
+                  exclusionGroup="1"
+                  name="Fixed Attribute Output"
+                  synchronousInputId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]"
+                  description="These rows contain new information for ChangingAttribute (Type 1) column changes"
+                  exclusionGroup="1"
+                  name="Changing Attribute Updates Output"
+                  synchronousInputId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]"
+                  description="HistoricalAttribute (Type 2) changes result in these new rows"
+                  exclusionGroup="2"
+                  name="Historical Attribute Inserts Output"
+                  synchronousInputId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension.Outputs[Inferred Member Updates Output]"
+                  description="Information to update unpopulated initial dimension row"
+                  exclusionGroup="1"
+                  name="Inferred Member Updates Output"
+                  synchronousInputId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_DIM_Distribution_Channel\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\DFT_DIM_Distribution_Channel\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Union All.Inputs[Union All Input 1].Columns[Distribution Channel]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Distribution Channel"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source.Outputs[OLE DB Source Output].Columns[Distribution Channel]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_DIM_Distribution_Channel\Union All.Outputs[Union All Output 1].Columns[Distribution Channel]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Union All.Inputs[Union All Input 1].Columns[ChannelKey]"
+                      cachedDataType="r8"
+                      cachedName="ChannelKey"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source.Outputs[OLE DB Source Output].Columns[ChannelKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_DIM_Distribution_Channel\Union All.Outputs[Union All Output 1].Columns[ChannelKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Union All.Inputs[Union All Input 1].Columns[Source_System_Code]"
+                      cachedDataType="ui1"
+                      cachedName="Source_System_Code"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\DRV_Source_System_Code.Outputs[Derived Column Output].Columns[Source_System_Code]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_DIM_Distribution_Channel\Union All.Outputs[Union All Output 1].Columns[Source_System_Code]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Union All.Inputs[Union All Input 1].Columns[Channel_Key]"
+                      cachedDataType="i4"
+                      cachedName="Channel_Key"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\DRV_Source_System_Code.Outputs[Derived Column Output].Columns[Channel_Key]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_DIM_Distribution_Channel\Union All.Outputs[Union All Output 1].Columns[Channel_Key]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT_DIM_Distribution_Channel\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Union All.Inputs[Union All Input 2].Columns[Distribution Channel]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Distribution Channel"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source.Outputs[OLE DB Source Output].Columns[Distribution Channel]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_DIM_Distribution_Channel\Union All.Outputs[Union All Output 1].Columns[Distribution Channel]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Union All.Inputs[Union All Input 2].Columns[ChannelKey]"
+                      cachedDataType="r8"
+                      cachedName="ChannelKey"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source.Outputs[OLE DB Source Output].Columns[ChannelKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_DIM_Distribution_Channel\Union All.Outputs[Union All Output 1].Columns[ChannelKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Union All.Inputs[Union All Input 2].Columns[Source_System_Code]"
+                      cachedDataType="ui1"
+                      cachedName="Source_System_Code"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\DRV_Source_System_Code.Outputs[Derived Column Output].Columns[Source_System_Code]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_DIM_Distribution_Channel\Union All.Outputs[Union All Output 1].Columns[Source_System_Code]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Union All.Inputs[Union All Input 2].Columns[Channel_Key]"
+                      cachedDataType="i4"
+                      cachedName="Channel_Key"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\DRV_Source_System_Code.Outputs[Derived Column Output].Columns[Channel_Key]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_DIM_Distribution_Channel\Union All.Outputs[Union All Output 1].Columns[Channel_Key]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT_DIM_Distribution_Channel\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_DIM_Distribution_Channel\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Union All.Outputs[Union All Output 1].Columns[Distribution Channel]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\Union All.Outputs[Union All Output 1].Columns[Distribution Channel]"
+                      name="Distribution Channel" />
+                    <outputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Union All.Outputs[Union All Output 1].Columns[ChannelKey]"
+                      dataType="r8"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\Union All.Outputs[Union All Output 1].Columns[ChannelKey]"
+                      name="ChannelKey" />
+                    <outputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Union All.Outputs[Union All Output 1].Columns[Source_System_Code]"
+                      dataType="ui1"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\Union All.Outputs[Union All Output 1].Columns[Source_System_Code]"
+                      name="Source_System_Code" />
+                    <outputColumn
+                      refId="Package\DFT_DIM_Distribution_Channel\Union All.Outputs[Union All Output 1].Columns[Channel_Key]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DIM_Distribution_Channel\Union All.Outputs[Union All Output 1].Columns[Channel_Key]"
+                      name="Channel_Key" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_DIM_Distribution_Channel.Paths[Data Conversion Output]"
+              endId="Package\DFT_DIM_Distribution_Channel\Insert Destination.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\DFT_DIM_Distribution_Channel\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\DFT_DIM_Distribution_Channel.Paths[Derived Column Output]"
+              endId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+              name="Derived Column Output"
+              startId="Package\DFT_DIM_Distribution_Channel\DRV_Source_System_Code.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT_DIM_Distribution_Channel.Paths[Derived Column Output1]"
+              endId="Package\DFT_DIM_Distribution_Channel\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\DFT_DIM_Distribution_Channel\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT_DIM_Distribution_Channel.Paths[Derived Column Output2]"
+              endId="Package\DFT_DIM_Distribution_Channel\Data Conversion.Inputs[Data Conversion Input]"
+              name="Derived Column Output"
+              startId="Package\DFT_DIM_Distribution_Channel\Derived Column 1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT_DIM_Distribution_Channel.Paths[Historical Attribute Inserts Output]"
+              endId="Package\DFT_DIM_Distribution_Channel\Derived Column.Inputs[Derived Column Input]"
+              name="Historical Attribute Inserts Output"
+              startId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]" />
+            <path
+              refId="Package\DFT_DIM_Distribution_Channel.Paths[New Output]"
+              endId="Package\DFT_DIM_Distribution_Channel\Union All.Inputs[Union All Input 1]"
+              name="New Output"
+              startId="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension.Outputs[New Output]" />
+            <path
+              refId="Package\DFT_DIM_Distribution_Channel.Paths[OLE DB Command Output]"
+              endId="Package\DFT_DIM_Distribution_Channel\Union All.Inputs[Union All Input 2]"
+              name="OLE DB Command Output"
+              startId="Package\DFT_DIM_Distribution_Channel\OLE DB Command.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\DFT_DIM_Distribution_Channel.Paths[OLE DB Source Output]"
+              endId="Package\DFT_DIM_Distribution_Channel\DRV_Source_System_Code.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_DIM_Distribution_Channel.Paths[Union All Output 1]"
+              endId="Package\DFT_DIM_Distribution_Channel\Derived Column 1.Inputs[Derived Column Input]"
+              name="Union All Output 1"
+              startId="Package\DFT_DIM_Distribution_Channel\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="226.4,41.6"
+          Id="Package\DFT_DIM_Distribution_Channel"
+          TopLeft="521.428572538556,36.7058823207671" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT_DIM_Distribution_Channel">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\DFT_DIM_Distribution_Channel\Insert Destination"
+          TopLeft="444.93809586658,742.190196056088" />
+        <NodeLayout
+          Size="239.2,41.6"
+          Id="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source"
+          TopLeft="406.53809586658,30.9901960560881" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\DFT_DIM_Distribution_Channel\Derived Column"
+          TopLeft="312.73809586658,335.790196056088" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\DFT_DIM_Distribution_Channel\OLE DB Command"
+          TopLeft="300.73809586658,437.390196056088" />
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension"
+          TopLeft="422.13809586658,234.190196056088" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\DFT_DIM_Distribution_Channel\Derived Column 1"
+          TopLeft="444.93809586658,640.590196056088" />
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\DFT_DIM_Distribution_Channel\Data Conversion"
+          TopLeft="244.444444964802,705.176470408" />
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\DFT_DIM_Distribution_Channel\Union All"
+          TopLeft="466.13809586658,538.990196056088" />
+        <NodeLayout
+          Size="206.4,41.6"
+          Id="Package\DFT_DIM_Distribution_Channel\DRV_Source_System_Code"
+          TopLeft="422.93809586658,132.590196056088" />
+        <EdgeLayout
+          Id="Package\DFT_DIM_Distribution_Channel.Paths[OLE DB Source Output]"
+          TopLeft="526.13809586658,72.5901960560881">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_DIM_Distribution_Channel.Paths[OLE DB Command Output]"
+          TopLeft="383.13809586658,478.990196056088">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="124.333333333333,59.9999999999999"
+              Start="0,0"
+              End="124.333333333333,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5263157894736" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5263157894736"
+                    Point2="0,35.5263157894736"
+                    Point3="4,35.5263157894736" />
+                  <mssgle:LineSegment
+                    End="120.333333333333,35.5263157894736" />
+                  <mssgle:CubicBezierSegment
+                    Point1="120.333333333333,35.5263157894736"
+                    Point2="124.333333333333,35.5263157894736"
+                    Point3="124.333333333333,39.5263157894736" />
+                  <mssgle:LineSegment
+                    End="124.333333333333,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_DIM_Distribution_Channel.Paths[New Output]"
+          TopLeft="559.471429199913,275.790196056088">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-14.6666666666666,263.2"
+              Start="0,0"
+              End="-14.6666666666666,255.7">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,126.695815115553" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,126.695815115553"
+                    Point2="0,130.695815115553"
+                    Point3="-4,130.695815115553" />
+                  <mssgle:LineSegment
+                    End="-10.6666666666666,130.695815115553" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10.6666666666666,130.695815115553"
+                    Point2="-14.6666666666666,130.695815115553"
+                    Point3="-14.6666666666666,134.695815115553" />
+                  <mssgle:LineSegment
+                    End="-14.6666666666666,255.7" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-34.4247200520833,135.695815115553,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_DIM_Distribution_Channel.Paths[Historical Attribute Inserts Output]"
+          TopLeft="492.804762533246,275.790196056088">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-103.666666666667,59.9999999999999"
+              Start="0,0"
+              End="-103.666666666667,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2748091603053" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2748091603053"
+                    Point2="0,24.2748091603053"
+                    Point3="-4,24.2748091603053" />
+                  <mssgle:LineSegment
+                    End="-99.6666666666667,24.2748091603053" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-99.6666666666667,24.2748091603053"
+                    Point2="-103.666666666667,24.2748091603053"
+                    Point3="-103.666666666667,28.2748091603053" />
+                  <mssgle:LineSegment
+                    End="-103.666666666667,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-126.889720052083,29.2748091603053,150.1127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_DIM_Distribution_Channel.Paths[Derived Column Output2]"
+          TopLeft="526.13809586658,682.190196056088">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-204.093650901777,22.9862743519127"
+              Start="0,0"
+              End="-204.093650901777,15.4862743519127">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,7.49313717595635" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,7.49313717595635"
+                    Point2="0,11.4931371759563"
+                    Point3="-4,11.4931371759563" />
+                  <mssgle:LineSegment
+                    End="-200.093650901777,11.4931371759563" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-200.093650901777,11.4931371759563"
+                    Point2="-204.093650901777,11.4931371759563"
+                    Point3="-204.093650901777,15.4931371759563" />
+                  <mssgle:LineSegment
+                    End="-204.093650901777,15.4862743519127" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_DIM_Distribution_Channel.Paths[Derived Column Output1]"
+          TopLeft="386.13809586658,377.390196056088">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_DIM_Distribution_Channel.Paths[Derived Column Output]"
+          TopLeft="526.13809586658,174.190196056088">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_DIM_Distribution_Channel.Paths[Data Conversion Output]"
+          TopLeft="399.644444964802,725.976470408">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="45.2936509017772,37.0137256480872"
+              Start="0,0"
+              End="37.7936509017772,37.0137256480872">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="18.6468254508886,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="18.6468254508886,0"
+                    Point2="22.6468254508886,0"
+                    Point3="22.6468254508886,4" />
+                  <mssgle:LineSegment
+                    End="22.6468254508886,33.0137256480872" />
+                  <mssgle:CubicBezierSegment
+                    Point1="22.6468254508886,33.0137256480872"
+                    Point2="22.6468254508886,37.0137256480872"
+                    Point3="26.6468254508886,37.0137256480872" />
+                  <mssgle:LineSegment
+                    End="37.7936509017772,37.0137256480872" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_DIM_Distribution_Channel.Paths[Union All Output 1]"
+          TopLeft="526.13809586658,580.590196056088">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_DIM_Distribution_Channel\Insert Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_DIM_Distribution_Channel\DIM_Distribution_Channel_Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_DIM_Distribution_Channel\Slowly Changing Dimension">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionID&gt;{26F2EEA2-BF45-427A-BB00-7E982A563B00}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dbo].[DIM_Distribution_Channel]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DRV_Source_System_Code.Outputs[Derived Column Output].Columns[Channel_Key]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Channel_Key_BK&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DIM_Distribution_Channel_Source.Outputs[OLE DB Source Output].Columns[Distribution Channel]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Distribution_Channel&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DRV_Source_System_Code.Outputs[Derived Column Output].Columns[Source_System_Code]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;source_system_code&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Union All&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column 1&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;true&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;StartDateColumn&gt;start_date&lt;/StartDateColumn&gt;
+  &lt;EndDateColumn&gt;end_date&lt;/EndDateColumn&gt;
+  &lt;DateVariable&gt;System::StartTime&lt;/DateVariable&gt;
+  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
